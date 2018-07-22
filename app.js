@@ -23,6 +23,11 @@ const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
+// Passport Middleware Config
+
+var passport = require('./routes/auth');
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware Setup
 app.use(logger('dev'));
